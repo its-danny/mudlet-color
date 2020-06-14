@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-import { green, red } from "chalk";
+import chalk from "chalk";
 import { existsSync, readFileSync, writeFileSync } from "fs";
-import { safeLoad } from "js-yaml";
+import yaml from "js-yaml";
 import path from "path";
 import { fileURLToPath } from "url";
-import { Builder, Parser } from "xml2js";
+import xml2js from "xml2js";
 import yargs from "yargs";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention, no-underscore-dangle
@@ -35,21 +35,21 @@ const profilePath = argv.p;
 
 const checkPaths = () => {
   if (!existsSync(themePath)) {
-    console.log(red("Not a valid theme!"));
+    console.log(chalk.red("Not a valid theme!"));
     process.exit();
   }
 
   if (!existsSync(profilePath)) {
-    console.log(red("Can't find profile!"));
+    console.log(chalk.red("Can't find profile!"));
     process.exit();
   }
 };
 
 const writeProfile = async () => {
-  const parser = new Parser();
-  const builder = new Builder();
+  const parser = new xml2js.Parser();
+  const builder = new xml2js.Builder();
 
-  const theme = safeLoad(readFileSync(themePath, "utf8"));
+  const theme = yaml.safeLoad(readFileSync(themePath, "utf8"));
   const profile = readFileSync(profilePath);
 
   try {
@@ -71,9 +71,9 @@ const writeProfile = async () => {
       theme.mBgColor;
 
     writeFileSync(profilePath, builder.buildObject(result));
-    console.log(green("Profile updated!"));
+    console.log(chalk.green("Profile updated!"));
   } catch (err) {
-    console.log(red("Can't parse profile!"));
+    console.log(chalk.red("Can't parse profile!"));
     process.exit();
   }
 };
