@@ -28,7 +28,7 @@ const themePath = `${path.join(__dirname, "..")}/themes/${argv.t}.yml`;
 const profilePath = argv.p;
 
 const getThemeList = () => {
-  console.log("To see what the themes look like: https://mayccoll.github.io/Gogh/\n");
+  console.log("https://mayccoll.github.io/Gogh/\n");
 
   console.log(
     fs
