@@ -6,8 +6,6 @@ const yaml = require("js-yaml");
 const xml2js = require("xml2js");
 const yargs = require("yargs");
 
-// Setup yargs
-
 const { argv } = yargs.usage("Usage: $0 -p [str] -t [str]").options({
   p: {
     alias: "path",
