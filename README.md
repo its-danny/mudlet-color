@@ -1,5 +1,7 @@
 # 🌈 mudlet-color
 
+![npm](https://img.shields.io/npm/v/mudlet-color)
+
 Small CLI utility to set color themes for [Mudlet](https://mudlet.org) profiles.
 
 The themes are ripped from [Gogh](https://mayccoll.github.io/Gogh/).
