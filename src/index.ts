@@ -57,7 +57,18 @@ const writeProfile = async () => {
 
     Object.keys(theme).forEach((key) => {
       result.MudletPackage.HostPackage[0].Host[0][key] = theme[key];
+      result.MudletPackage.HostPackage[0].Host[0][`${key}2`] = theme[key];
     });
+
+    result.MudletPackage.HostPackage[0].Host[0].mCommandFgColor =
+      theme.mFgColor;
+    result.MudletPackage.HostPackage[0].Host[0].mCommandLineFgColor =
+      theme.mFgColor;
+
+    result.MudletPackage.HostPackage[0].Host[0].mCommandBgColor =
+      theme.mBgColor;
+    result.MudletPackage.HostPackage[0].Host[0].mCommandLineBgColor =
+      theme.mBgColor;
 
     writeFileSync(profilePath, builder.buildObject(result));
     console.log(green("Profile updated!"));
