@@ -33,6 +33,26 @@ const { argv } = yargs
 const themePath = `${path.join(__dirname, "..")}/themes/${argv.t}.yml`;
 const profilePath = argv.p;
 
+console.log(
+  [
+    chalk.red("m"),
+    chalk.yellow("u"),
+    chalk.green("d"),
+    chalk.cyan("l"),
+    chalk.blue("e"),
+    chalk.magenta("t"),
+    chalk.white("-"),
+    chalk.white("color"),
+    chalk.white(
+      ` v${
+        JSON.parse(
+          readFileSync(`${path.join(__dirname, "..")}/package.json`, "utf8")
+        ).version
+      }`
+    ),
+  ].join("")
+);
+
 const checkPaths = () => {
   if (!existsSync(themePath)) {
     console.log(chalk.red("Not a valid theme!"));

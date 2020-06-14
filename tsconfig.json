@@ -5,7 +5,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "outDir": "./build",
-    "target": "esnext",
-    "strict": true
+    "strict": true,
+    "target": "esnext"
   }
 }
