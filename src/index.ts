@@ -41,15 +41,11 @@ console.log(
     chalk.cyan("l"),
     chalk.blue("e"),
     chalk.magenta("t"),
-    chalk.white("-"),
-    chalk.white("color"),
-    chalk.white(
-      ` v${
-        JSON.parse(
-          readFileSync(`${path.join(__dirname, "..")}/package.json`, "utf8")
-        ).version
-      }`
-    ),
+    `-color v${
+      JSON.parse(
+        readFileSync(`${path.join(__dirname, "..")}/package.json`, "utf8")
+      ).version
+    }`,
   ].join("")
 );
 
