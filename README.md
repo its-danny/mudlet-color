@@ -8,7 +8,7 @@ The themes are ripped from [Gogh](https://mayccoll.github.io/Gogh/).
 
 ## Usage
 
-Have [node](https://nodejs.org/en/) and [npx](https://www.npmjs.com/package/npx) installed.
+Assuming you have [Node v14.4.0](https://nodejs.org/en/download/current/) installed, just run the script with npx:
 
 ```text
 npx mudlet-color -p <path-to-profile> -t <theme-name>
