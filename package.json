@@ -1,6 +1,6 @@
 {
   "name": "mudlet-color",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Small CLI utility to set color themes for Mudlet profiles.",
   "repository": "https://github.com/dannytatom/mudlet-color",
   "author": "Danny Tatom <dannytatom@gmail.com>",
