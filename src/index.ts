@@ -11,8 +11,34 @@ import yargs from "yargs";
 // eslint-disable-next-line @typescript-eslint/naming-convention, no-underscore-dangle
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+// print headline & current version
+
+const colors = [
+  chalk.red,
+  chalk.yellow,
+  chalk.green,
+  chalk.cyan,
+  chalk.blue,
+  chalk.magenta,
+];
+
+const headline = "mudlet-color"
+  .split("")
+  .map((c) => colors[Math.floor(Math.random() * colors.length)](c))
+  .join("");
+
+console.log(
+  `${headline} v${
+    JSON.parse(
+      readFileSync(`${path.join(__dirname, "..")}/package.json`, "utf8")
+    ).version
+  } ...\n`
+);
+
+// setup yargs
+
 const { argv } = yargs
-  .usage("Usage: $0 -p [str] -t [str]")
+  .usage("Usage: mudlet-color -p [path-to-profile] -t [theme-name]")
   .options({
     p: {
       alias: "path",
@@ -26,28 +52,14 @@ const { argv } = yargs
       describe: "Name of theme",
       demandOption: true,
     },
-  })
-  .conflicts("s", "p")
-  .conflicts("s", "t");
+  });
+
+// setup paths
 
 const themePath = `${path.join(__dirname, "..")}/themes/${argv.t}.yml`;
 const profilePath = argv.p;
 
-console.log(
-  [
-    chalk.red("m"),
-    chalk.yellow("u"),
-    chalk.green("d"),
-    chalk.cyan("l"),
-    chalk.blue("e"),
-    chalk.magenta("t"),
-    `-color v${
-      JSON.parse(
-        readFileSync(`${path.join(__dirname, "..")}/package.json`, "utf8")
-      ).version
-    }`,
-  ].join("")
-);
+// exit if either profile or theme path is invalid
 
 const checkPaths = () => {
   if (!existsSync(themePath)) {
@@ -60,6 +72,8 @@ const checkPaths = () => {
     process.exit();
   }
 };
+
+// write the colors from the given theme to the given profile
 
 const writeProfile = async () => {
   const parser = new xml2js.Parser();
@@ -87,12 +101,14 @@ const writeProfile = async () => {
       theme.mBgColor;
 
     writeFileSync(profilePath, builder.buildObject(result));
-    console.log(chalk.green("Profile updated!"));
+    console.log(chalk.cyan("Profile updated!"));
   } catch (err) {
     console.log(chalk.red("Can't parse profile!"));
     process.exit();
   }
 };
+
+// if both path and theme are passed, get at it
 
 if (argv.p && argv.t) {
   checkPaths();
