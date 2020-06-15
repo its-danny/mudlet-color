@@ -10,14 +10,14 @@ The themes are ripped from [Gogh](https://mayccoll.github.io/Gogh/).
 
 Assuming you have [Node v14.4.0](https://nodejs.org/en/download/current/) installed, just run the script with npx:
 
-```text
+```zsh
 npx mudlet-color -p <path-to-profile> -t <theme-name>
 ```
 
 ## Example
 
-```text
-npx mudlet-color -p .config/mudlet/profiles/Lusternia/current/13-06-2020\#23-45-56.xml -t palenight
+```zsh
+npx mudlet-color -p ~/.config/mudlet/profiles/Lusternia/current/profile.xml -t palenight
 ```
 
 ![screenshot](https://i.imgur.com/mSmtPJJ.png)
